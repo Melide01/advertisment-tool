@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=320, initial-scale=1">
+    <meta charset="utf-8">
+    <style>
+      body, html {
+        min-width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        font: Arial 14px;
+      }
+      
+      
+      a {
+        margin-left: 10%;margin-right: 10%;
+      }
+      
+      button {
+        height: 50px;
+        background-color: #0082ff; color: #fff;
+        border-radius: 20px
+      }
+      
+      
+      .banner {
+    margin-left: 15%; margin-bottom: 3%; display: flex; justify-content: center; align-items: center;
+    width: 70%; height: 100px; overflow: hidden;
+    background-color: #444;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    position: relative;
+    border: 2px solid #444;
+  }
+  .banner img { 
+    height: 100px; object-fit: cover;
+  }
+  
+  .close-btn {
+    display: flex; justify-content: center; align-items: center;
+    position: absolute;
+    height: 20px; width: 20px;
+    top: -2px;
+    right: -2px;
+    font-size: 30px;
+    background-color: white; border: 2px solid #444;
+    color: #007bff; /* blue color */
+    cursor: pointer;
+  }
+      
+      #imageContainer {
+        display: flex; align-items: center;
+      }
+      
+    </style>
+    <!--<link rel="stylesheet" href="style.css"/>-->
+    <!--<script defer src="script.js"></script>-->
+  </head>
+  <body>
+    <br><br><br>
+    
+    
+    <div class="banner">
+      <span class="close-btn">&times;</span>
+      <div id="imageContainer">
+        <img src="image.png">
+      </div>
+      
+      <!-- Add your advertisement content here -->
+    </div>
+    
+    
+    <a href="image.png" download="modèle" id="ref">
+      <button type="button">
+        Télécharger le modèle
+      </button>
+    </a>
+    <input type="file" id="imageInput" accept="image/*">
+    
+
+
+    <script>
+      var input = document.getElementById('imageInput');
+      
+      
+      
+      
+      
+      input.addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        
+        var reader = new FileReader();
+        
+        reader.onload = function() {
+          var img = document.createElement('img');
+          
+          img.src = reader.result;
+          
+          var container = document.getElementById('imageContainer');
+          
+          container.innerHTML = '';
+          
+          container.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+      
+      
+    </script>
+  </body>
+</html>
